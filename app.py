@@ -174,7 +174,7 @@ app.layout = html.Div([
             html.Br(),
             dbc.Row([
               dbc.Col([
-                    getPlot(fig_transaction, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_transaction, "Title here", "We have explored a big number of transactions that was shared with us by the client, and we found out only 0.2% of all transactions are fraud."))
                 ], width=5),
                 dbc.Col([
                     getPlot(fig_values, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
