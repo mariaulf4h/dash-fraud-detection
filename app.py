@@ -138,7 +138,7 @@ def getAuthor():
                     , width="500px")], width='6'),
                     dbc.Col([
                         html.Div([
-                            html.P('We are from Fraudbuster xxxxxxx.'),
+                            html.P('Welcome to the Fraudbusters.'),
                             html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
                             html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
                             html.P("This is our project, xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
@@ -174,7 +174,7 @@ app.layout = html.Div([
             html.Br(),
             dbc.Row([
               dbc.Col([
-                    getPlot(fig_transaction, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_transaction, "We have explored a big number of transactions that was shared with us by the client, and we found out only 0.2% of all transactions are fraud.")
                 ], width=5),
                 dbc.Col([
                     getPlot(fig_values, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
