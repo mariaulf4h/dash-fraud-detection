@@ -139,18 +139,10 @@ def getAuthor():
                     dbc.Col([
                         html.Div([
                             html.P('Welcome to the Fraudbusters.'),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("This is our project, xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("The Hypothesis:"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("Then, the objective of xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx:"),
-                            html.P("1. xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("2. xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"), 
-                            html.P("3. xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
+                            html.P("This is our second DataScience project. For this project we have explored transactional data, which was provided by 'Xente', an e-payments, e-commerce, and financial services company in Uganda."),
+                            html.P("The data included a total of ~96k transactins, of which some were tagged as fraudulent."),
+                            html.P("The ultimate objective for our project was to implement a Machine Learning algorithm, train it on the known (classified) data, so it can be used it in order to predict fraudulent transactions in unknows data (based on features regularly available in transaction data)."),
+                            html.P("The developed solution is supposed to help Xente provide improved and safer service to its customers."),
                             html.A("You can find full version of analysis on our Github.","href=xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
                         ])
                     ], width='8')
