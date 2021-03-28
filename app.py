@@ -29,12 +29,10 @@ fr_group["labels"] = label
 # "by Percentage of Transactions"
 colors = ['#4F6272', '#B7C3F3', '#DD7596', '#8EB897']
 
-fig_transaction = px.pie(fr_group, values = "CustomerId", title = "Volume of Fraudulence by Percentage of Transactions", 
-             names = "labels", color_discrete_sequence=colors)
+fig_transaction = px.pie(fr_group, values = "CustomerId", names = "labels", color_discrete_sequence=colors)
 
 # "by values"
-fig_values = px.pie(fr_group, values = "Value", title = "Volume of Fraud Transactions by Values", 
-             names = "labels", color_discrete_sequence=colors)
+fig_values = px.pie(fr_group, values = "Value", names = "labels", color_discrete_sequence=colors)
 
 
 #Selecting only Fraud
@@ -45,18 +43,18 @@ fig_fraud_product = px.bar(fraud, x='ProductCategory', y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
              height=400, labels = {'FraudResult' : "Count of Fraud Transactions", 
                                    'ProductCategory': "Product Categories"}, )
-fig_fraud_product.update_layout(title_text="Numbers of Fraudulent Transactions by Product Categories")
+#fig_fraud_product.update_layout(title_text="Numbers of Fraudulent Transactions by Product Categories")
 
 # Plot Fraud by Days 
 fig_fraud_days = px.bar(fraud.sort_values("weekday"), x='days', y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400, labels = {'FraudResult' : "Count of Fraud Transactions"})
-fig_fraud_days.update_layout(title_text="Numbers of Fraudulent Transactions by Days")
+             height=400)#, labels = {'FraudResult' : "Count of Fraud Transactions"})
+#fig_fraud_days.update_layout(title_text="Numbers of Fraudulent Transactions by Days")
 
 # Plot Fraud by Hour
 fig_fraud_hour = px.bar(fraud.sort_values("hour"), x="hour", y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400, labels = {'FraudResult' : "Count of Fraud Transactions"})
+             height=400)#, labels = {'FraudResult' : "Count of Fraud Transactions"})
 fig_fraud_hour.update_layout(title_text="Numbers of Fraudulent Transactions by Hour")
 
 #import df_plot
@@ -174,25 +172,25 @@ app.layout = html.Div([
             html.Br(),
             dbc.Row([
               dbc.Col([
-                    getPlot(fig_transaction, "Title here", "We have explored a big number of transactions that was shared with us by the client, and we found out only 0.2% of all transactions are fraud.")
+                    getPlot(fig_transaction, "Fraudulent vs. non-fraudulent transactuins - count", "Only ~0.2% of all transactions are fraud.")
                 ], width=5),
                 dbc.Col([
-                    getPlot(fig_values, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_values, "Fraudulent vs. non-fraudulent transactuins - value", "Fraudulent transactions account for ~32% of the overall transaction value.")
                 ], width=7),
             ], align='center'), 
             html.Br(),
             dbc.Row([
                 dbc.Col([
-                    getPlot(fig_fraud_product, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_fraud_product, "Fraudulent transactions by product category", "Most fraudulent transactions refer to Financial Services.")
                 ], width=6),
                 dbc.Col([
-                    getPlot(fig_fraud_days, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_fraud_days, "Fraudulent transactions by weekday (count)", "Weekday with highest number of fraudulent transactions: Thursday.")
                 ], width=6),
             ], align='start'), 
             html.Br(),
             dbc.Row([
                 dbc.Col([
-                    getPlot(fig_fraud_hour, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_fraud_hour, "Fraudulent transactions by hour (count)", "Peak of fraudulent transactions: 12:00am.")
                 ], width=6),
                 dbc.Col([
                     getPlot(fig_customer_history, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
