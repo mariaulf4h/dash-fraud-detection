@@ -41,21 +41,23 @@ fraud = df[df["FraudResult"] == 1]
 # Plot Fraud Product Category
 fig_fraud_product = px.bar(fraud, x='ProductCategory', y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400, labels = {'FraudResult' : "Count of Fraud Transactions", 
-                                   'ProductCategory': "Product Categories"}, )
+             height=400, labels = {'FraudResult' : "Count of fraud. Transactions", 
+                                   'ProductCategory': "Product Category"}, )
 #fig_fraud_product.update_layout(title_text="Numbers of Fraudulent Transactions by Product Categories")
 
 # Plot Fraud by Days 
 fig_fraud_days = px.bar(fraud.sort_values("weekday"), x='days', y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400)#, labels = {'FraudResult' : "Count of Fraud Transactions"})
+             height=400), labels = {'FraudResult' : "Count of fraud. Transactions",
+                                   'days': "Weekday"})
 #fig_fraud_days.update_layout(title_text="Numbers of Fraudulent Transactions by Days")
 
 # Plot Fraud by Hour
 fig_fraud_hour = px.bar(fraud.sort_values("hour"), x="hour", y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400)#, labels = {'FraudResult' : "Count of Fraud Transactions"})
-fig_fraud_hour.update_layout(title_text="Numbers of Fraudulent Transactions by Hour")
+             height=400), labels = {'FraudResult' : "Count of fraud. Transactions",
+                                   'hour': "Hour"})
+#fig_fraud_hour.update_layout(title_text="Numbers of Fraudulent Transactions by Hour")
 
 #import df_plot
 df_plot = pd.read_csv("data/df_plot.csv", index_col = 0)
