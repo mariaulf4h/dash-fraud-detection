@@ -41,26 +41,19 @@ fraud = df[df["FraudResult"] == 1]
 # Plot Fraud Product Category
 fig_fraud_product = px.bar(fraud, x='ProductCategory', y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400)
-fig_fraud_product.update_layout(xaxis={'visible': False, 'showticklabels': True})
-fig_fraud_product.update_layout(yaxis={'visible': False, 'showticklabels': True})
-
+             height=400, labels={'ProductCategory': "", 'FraudResult': ""})
 #fig_fraud_product.update_layout(title_text="Numbers of Fraudulent Transactions by Product Categories")
 
 # Plot Fraud by Days 
 fig_fraud_days = px.bar(fraud.sort_values("weekday"), x='days', y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400)
-fig_fraud_days.update_layout(xaxis={'visible': False, 'showticklabels': True})
-fig_fraud_days.update_layout(yaxis={'visible': False, 'showticklabels': True})
+             height=400, labels={'days': "", 'FraudResult': ""})
 #fig_fraud_days.update_layout(title_text="Numbers of Fraudulent Transactions by Days")
 
 # Plot Fraud by Hour
 fig_fraud_hour = px.bar(fraud.sort_values("hour"), x="hour", y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400)
-fig_fraud_hour.update_layout(xaxis={'visible': False, 'showticklabels': True})
-fig_fraud_hour.update_layout(yaxis={'visible': False, 'showticklabels': True})
+             height=400, labels={'hour': "", 'FraudResult': ""})
 #fig_fraud_hour.update_layout(title_text="Numbers of Fraudulent Transactions by Hour")
 
 #import df_plot
