@@ -41,7 +41,7 @@ fraud = df[df["FraudResult"] == 1]
 # Plot Fraud Product Category
 fig_fraud_product = px.bar(fraud, x='ProductCategory', y='FraudResult',
              hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400, labels = 'FraudResult': None, 'ProductCategory': None})
+             height=400, labels = {'FraudResult': None, 'ProductCategory': None})
 #fig_fraud_product.update_layout(title_text="Numbers of Fraudulent Transactions by Product Categories")
 
 # Plot Fraud by Days 
