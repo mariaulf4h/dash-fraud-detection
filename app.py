@@ -29,12 +29,10 @@ fr_group["labels"] = label
 # "by Percentage of Transactions"
 colors = ['#4F6272', '#B7C3F3', '#DD7596', '#8EB897']
 
-fig_transaction = px.pie(fr_group, values = "CustomerId", title = "Volume of Fraudulence by Percentage of Transactions", 
-             names = "labels", color_discrete_sequence=colors)
+fig_transaction = px.pie(fr_group, values = "CustomerId", names = "labels", color_discrete_sequence=colors)
 
 # "by values"
-fig_values = px.pie(fr_group, values = "Value", title = "Volume of Fraud Transactions by Values", 
-             names = "labels", color_discrete_sequence=colors)
+fig_values = px.pie(fr_group, values = "Value", names = "labels", color_discrete_sequence=colors)
 
 
 #Selecting only Fraud
@@ -42,22 +40,19 @@ fraud = df[df["FraudResult"] == 1]
 
 # Plot Fraud Product Category
 fig_fraud_product = px.bar(fraud, x='ProductCategory', y='FraudResult',
-             hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400, labels = {'FraudResult' : "Count of Fraud Transactions", 
-                                   'ProductCategory': "Product Categories"}, )
-fig_fraud_product.update_layout(title_text="Numbers of Fraudulent Transactions by Product Categories")
+             hover_data=['ProductId'], color='Value',
+             height=400, labels={'ProductCategory': "", 'FraudResult': ""})
+#fig_fraud_product.update_layout(title_text="Numbers of Fraudulent Transactions by Product Categories")
 
 # Plot Fraud by Days 
 fig_fraud_days = px.bar(fraud.sort_values("weekday"), x='days', y='FraudResult',
-             hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400, labels = {'FraudResult' : "Count of Fraud Transactions"})
-fig_fraud_days.update_layout(title_text="Numbers of Fraudulent Transactions by Days")
+             color='Value', height=400, labels={'days': "", 'FraudResult': ""})
+#fig_fraud_days.update_layout(title_text="Numbers of Fraudulent Transactions by Days")
 
 # Plot Fraud by Hour
 fig_fraud_hour = px.bar(fraud.sort_values("hour"), x="hour", y='FraudResult',
-             hover_data=['ProductId', 'ChannelId'], color='Value',
-             height=400, labels = {'FraudResult' : "Count of Fraud Transactions"})
-fig_fraud_hour.update_layout(title_text="Numbers of Fraudulent Transactions by Hour")
+             color='Value', height=400, labels={'hour': "", 'FraudResult': ""})
+#fig_fraud_hour.update_layout(title_text="Numbers of Fraudulent Transactions by Hour")
 
 #import df_plot
 df_plot = pd.read_csv("data/df_plot.csv", index_col = 0)
@@ -138,19 +133,11 @@ def getAuthor():
                     , width="500px")], width='6'),
                     dbc.Col([
                         html.Div([
-                            html.P('We are from Fraudbuster xxxxxxx.'),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("This is our project, xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("The Hypothesis:"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("Then, the objective of xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx:"),
-                            html.P("1. xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
-                            html.P("2. xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"), 
-                            html.P("3. xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
+                            html.P('Welcome to the Fraudbusters.'),
+                            html.P("This is our second DataScience project. For this project we have explored transactional data, which was provided by 'Xente', an e-payments, e-commerce, and financial services company in Uganda."),
+                            html.P("The data included a total of ~96k transactins, of which some were tagged as fraudulent."),
+                            html.P("The ultimate objective for our project was to implement a Machine Learning algorithm, train it on the known (classified) data, so it can be used in order to predict fraudulent transactions in unknown data (based on features regularly available in transaction data)."),
+                            html.P("The developed solution is supposed to help Xente provide improved and safer service to its customers."),
                             html.A("You can find full version of analysis on our Github.","href=xxxxxxxxxxxxxxxxx tbd xxxxxxxxxx"),
                         ])
                     ], width='8')
@@ -174,25 +161,25 @@ app.layout = html.Div([
             html.Br(),
             dbc.Row([
               dbc.Col([
-                    getPlot(fig_transaction, "Title here", "We have explored a big number of transactions that was shared with us by the client, and we found out only 0.2% of all transactions are fraud."))
+                    getPlot(fig_transaction, "Fraudulent vs. non-fraudulent transactuins - count", "Only ~0.2% of all transactions are fraud.")
                 ], width=5),
                 dbc.Col([
-                    getPlot(fig_values, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_values, "Fraudulent vs. non-fraudulent transactuins - value", "Fraudulent transactions account for ~32% of the overall transaction value.")
                 ], width=7),
             ], align='center'), 
             html.Br(),
             dbc.Row([
                 dbc.Col([
-                    getPlot(fig_fraud_product, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_fraud_product, "Fraudulent transactions by product category (count)", "Most fraudulent transactions refer to Financial Services.")
                 ], width=6),
                 dbc.Col([
-                    getPlot(fig_fraud_days, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_fraud_days, "Fraudulent transactions by weekday (count)", "Weekday with highest number of fraudulent transactions: Thursday.")
                 ], width=6),
             ], align='start'), 
             html.Br(),
             dbc.Row([
                 dbc.Col([
-                    getPlot(fig_fraud_hour, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_fraud_hour, "Fraudulent transactions by hour (count)", "Peak of fraudulent transactions: 12:00am.")
                 ], width=6),
                 dbc.Col([
                     getPlot(fig_customer_history, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
