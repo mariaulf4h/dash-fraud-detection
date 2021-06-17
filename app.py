@@ -63,7 +63,7 @@ fig_customer_history = px.scatter(df_plot, x = "Value", y = "fraud_total",
                        labels = {"fraud_total" : "Count of Fraudulence Transaction", "fraud_history": "Fraud History"},
                        size = "Value", color = "fraud_history", hover_data= ["ProductCategory", "ChannelId"])
 
-fig_customer_history.update_layout(title_text="Values of Transactions by Customer History", transition = {'duration': 100})
+fig_customer_history.update_layout(transition = {'duration': 100})
 
 
 # Import necessary libraries fo Dash
@@ -182,7 +182,7 @@ app.layout = html.Div([
                     getPlot(fig_fraud_hour, "Fraudulent transactions by hour (count)", "Peak of fraudulent transactions: 12:00am.")
                 ], width=6),
                 dbc.Col([
-                    getPlot(fig_customer_history, "xxxxxx tbd xxxxxxx", "xxxxxx tbd xxxxxxx")
+                    getPlot(fig_customer_history, "Values of Transactions by Customer History")
                 ], width=6),
             ], align='start'),
             dbc.Row([
